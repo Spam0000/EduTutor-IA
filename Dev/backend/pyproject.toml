@@ -31,7 +31,7 @@ ignore = ["E501"]  # gérée par black
 "**/migrations/*.py" = ["E501", "F401"]
 
 [tool.pytest.ini_options]
-DJANGO_SETTINGS_MODULE = "apocal.settings"
+DJANGO_SETTINGS_MODULE = "apocal.test_settings"
 python_files = ["tests.py", "test_*.py", "*_tests.py"]
 addopts = "--strict-markers --tb=short -q"
 testpaths = ["accounts", "llm", "quizzes", "administration"]

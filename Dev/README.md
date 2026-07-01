@@ -59,7 +59,11 @@ de LLM open source.
 
 ---
 
-## 🚀 Démarrage en 4 commandes
+## 🚀 Démarrage rapide
+
+Ce mode lance tout de suite le frontend, le backend et PostgreSQL avec Docker.
+La génération de quiz utilise le fournisseur `mock`, donc aucun modèle LLM de
+plusieurs Go n'est requis au premier lancement.
 
 ```bash
 # 1. Forker ce repo dans le compte de votre équipe, puis cloner
@@ -68,6 +72,29 @@ cd IPSSI_APOCAL_KIT
 
 # 2. Copier la config et lancer les services
 cp .env.example .env
+docker compose up -d --build
+
+# 3. Ouvrir l'application
+open http://localhost:3000      # front React
+open http://localhost:8000/api/docs  # Swagger UI
+```
+
+> 💡 Par défaut, `.env.example` met `LLM_BACKEND=mock` pour que le projet soit
+> utilisable immédiatement. Pour tester le vrai LLM local Ollama, suivez la
+> section ci-dessous.
+
+---
+
+## 🧠 Activer le vrai modèle Ollama
+
+```bash
+# 1. Forker ce repo dans le compte de votre équipe, puis cloner
+git clone https://github.com/VOTRE-EQUIPE/IPSSI_APOCAL_KIT.git
+cd IPSSI_APOCAL_KIT
+
+# 2. Copier la config et lancer les services
+cp .env.example .env
+# Dans .env, remplacer LLM_BACKEND=mock par LLM_BACKEND=ollama
 docker compose up -d
 
 # 3. Télécharger le modèle LLM (~5 min, à faire UNE fois)
